@@ -13,3 +13,7 @@ django-admin startproject mysite
 ```
 python manage.py runserver
 ```
+## Criando aplicação
+```
+python manage.py startapp polls
+```
