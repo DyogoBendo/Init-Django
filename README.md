@@ -41,3 +41,11 @@ python manage.py migrate
 ```
 python manage.py shell 
 ```
+## Criando um usuário administrador
+```
+python manage.py createsuperuser
+Username: admin
+Email address: admin@example.comPassword: **********
+Password (again): *********
+Superuser created successfully. 
+```
