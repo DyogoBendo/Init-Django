@@ -37,3 +37,7 @@ python manage.py check
 ```
 python manage.py migrate
 ```
+### Shell do Python
+```
+python manage.py shell 
+```
