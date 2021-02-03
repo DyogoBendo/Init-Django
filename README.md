@@ -21,3 +21,7 @@ python manage.py startapp polls
 ```
 python manage.py migrate
 ```
+## Realizando migrations da aplicação polls
+```
+python manage.py makemigrations polls 
+```

@@ -13,7 +13,7 @@ class Question(models.Model):  # criando a tabela
 
 
 class Choice(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE())
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
     # estabelecemos uma relação entre as tabelas Choice e Question
     choice_text = models.CharField(max_length=200)
     votes = models.IntegerField(default=0)
