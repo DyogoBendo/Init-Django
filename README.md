@@ -17,3 +17,7 @@ python manage.py runserver
 ```
 python manage.py startapp polls
 ```
+## Atualizando tabelas do Banco de dados
+```
+python manage.py migrate
+```
