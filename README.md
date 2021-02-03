@@ -29,3 +29,11 @@ python manage.py makemigrations polls
 ```
  python manage.py sqlmigrate polls 0001 
 ```
+## Verificando se há algum problema no projeto
+```
+python manage.py check 
+```
+## Executando a migration
+```
+python manage.py migrate
+```
