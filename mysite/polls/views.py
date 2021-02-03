@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Question
+from django.template import loader
 import json
 
 # Create your views here.
@@ -8,8 +9,10 @@ import json
 
 def index(request):
     latest_question_list = Question.objects.order_by('-pub_date')[:5]  # pegamos os cinco ultimas questions publicadas
-    output = ' '.join([q.question_text for q in latest_question_list])  # pega cada um dos titulos das questions
-    return HttpResponse(output)
+    context = {  # contexto mapeia nomes de variaveis para objeto python
+        "latest_question_list": latest_question_list
+    }
+    return render(request, 'polls/index.html', context)  # podemos simplificar dessa forma
 
 
 def detail(request, question_id):
