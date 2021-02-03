@@ -25,3 +25,7 @@ python manage.py migrate
 ```
 python manage.py makemigrations polls 
 ```
+## Visualizando os comandos SQL da migration 001, da aplicação polls
+```
+ python manage.py sqlmigrate polls 0001 
+```
