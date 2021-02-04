@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
-from .models import Question
+from django.http import HttpResponse, HttpResponseRedirect
+from .models import Question, Choice
+from django.urls import reverse
 from django.http import Http404
 from django.template import loader
 import json
@@ -27,4 +28,19 @@ def results(request, question_id):
 
 
 def vote(request, question_id):
-    return HttpResponse("Você está votando na questão %s" % question_id)
+    question = get_object_or_404(Question, pk=question_id)  # pegamos a questão salva no bd
+    try:
+        selected_choice = question.choice_set.get(pk=request.POST['choice'])  # pegamos a opção selecionada
+    except (KeyError, Choice.DoesNotExist):
+        return render(request, 'polls/detail.html', {
+            'question': question,
+            "error_message": "You didn't select a choice."
+        })
+    else:
+        selected_choice.votes += 1  # adicionamos um voto
+        selected_choice.save()  # salvamos voto no banco de dados
+
+        # é recomendável dar um retorno para quando usamos método post
+        return HttpResponseRedirect(reverse('polls:results', args=(question_id,)))  # redirecionamos o usuário
+        # ele é enviado para a página polls/question_id/results/
+
