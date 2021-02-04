@@ -17,7 +17,8 @@ class Question(models.Model):  # criando a tabela
         return self.question_text
 
     def was_published_recently(self):
-        return self.pub_date >= timezone.now()
+        now = timezone.now()
+        return now - datetime.timedelta(days=1) <= self.pub_date <= now
 
 
 datetime.timedelta(days=1)
