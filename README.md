@@ -49,3 +49,8 @@ Email address: admin@example.comPassword: **********
 Password (again): *********
 Superuser created successfully. 
 ```
+
+## Executando testes de polls
+```
+python manage.py test polls 
+```
