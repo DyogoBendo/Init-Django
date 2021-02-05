@@ -4,7 +4,7 @@ from .models import Question, Choice
 # Register your models here.
 
 
-class ChoiceInLine(admin.StackedInline):
+class ChoiceInLine(admin.TabularInline):
     model = Choice
     extra = 3  # são mostradas pelo menos 3 campos de Choice
 
