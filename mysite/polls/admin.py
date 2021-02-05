@@ -18,6 +18,7 @@ class QuestionAdmin(admin.ModelAdmin):
 
     list_display = ("question_text", "pub_date", "was_published_recently")  # o que é mostrado na tela inicial
     list_filter = ["pub_date"]  # adicionamos a possibilidade de um filtro, a partir da data de publicação
+    search_fields = ["question_text"]  # adicionamos um texto de pesquisa para o texto das questões
 
 
 admin.site.register(Question, QuestionAdmin)
