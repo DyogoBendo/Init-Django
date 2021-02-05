@@ -54,3 +54,8 @@ Superuser created successfully.
 ```
 python manage.py test polls 
 ```
+
+## Criando pacote
+```
+python setup.py sdist
+```
