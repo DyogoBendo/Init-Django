@@ -59,3 +59,8 @@ python manage.py test polls
 ```
 python setup.py sdist
 ```
+
+## Instalando o pacote que criamos
+```
+python -m pip install --user django-polls/dist/django-polls-0.1.tar.gz
+```
