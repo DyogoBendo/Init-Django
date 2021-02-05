@@ -16,5 +16,7 @@ class QuestionAdmin(admin.ModelAdmin):
     ]
     inlines = [ChoiceInLine]  # adicionamos para que Choice possa ser editado em Question
 
+    list_display = ("question_text", "pub_date", "was_published_recently")  # o que é mostrado na tela inicial
+
 
 admin.site.register(Question, QuestionAdmin)

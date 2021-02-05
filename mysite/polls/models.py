@@ -19,6 +19,9 @@ class Question(models.Model):  # criando a tabela
     def was_published_recently(self):
         now = timezone.now()
         return now - datetime.timedelta(days=1) <= self.pub_date <= now
+    was_published_recently.admin_order_field = "pub_date"  # parametro usado para ordenar
+    was_published_recently.boolean = True  # é considerada uma booleans, então passa a mostrar de forma mais clara isso
+    was_published_recently.shor_description = "Published recently!"  # mensagem que é mostrada
 
 
 datetime.timedelta(days=1)
