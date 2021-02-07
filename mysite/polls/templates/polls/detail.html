@@ -1,23 +1,42 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
     <title>Details</title>
-</head>
-<body>
-<h1>{{question.question_text}}</h1>
-{% if error_message %} <p><strong> {{error_message}} </strong> </p> {% endif %}
-
-<form action="{% url 'polls:vote' question.id %}" method="post">
-    {% csrf_token %}
-    {% for choice in question.choice_set.all %}
-        <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{choice.id}}">
-        <label for="choice{{ forloop.counter }}">
+    <link rel="stylesheet" type="text/css" href="{% static "polls/details.css"%}">
+  </head>
+  <body>
+    
+    <header>
+      <h1>{{question.question_text}}</h1>
+    </header>
+    <main>
+      <form action="{% url 'polls:vote' question.id %}" method="post">
+        {% csrf_token %}
+        {% for choice in question.choice_set.all %}
+        <div class="option-group">
+          <label for="choice{{ forloop.counter }}">
             {{choice.choice_text}}
-        </label>
-        <br>
-    {% endfor %}
-    <input type="submit" value="Vote">
-</form>
-</body>
+          </label>
+          <input
+            type="radio"
+            name="choice"
+            id="choice{{ forloop.counter }}"
+            value="{{choice.id}}"
+            required
+          />
+        </div>
+        {% endfor %}
+        <input type="submit" value="Vote" />
+      </form>
+    </main>
+    <footer>
+      <p>Página de Listagem de Enquetes - 2021</p>
+    </footer>
+
+    {% if error_message %}
+    <p><strong> {{error_message}} </strong></p>
+    {% endif %}
+  </body>
 </html>

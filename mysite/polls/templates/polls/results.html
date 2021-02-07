@@ -1,19 +1,32 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Results</title>
-</head>
-<body>
-    <h1>{{ question.question_text }}</h1>
-
-    <ul>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Resultados</title>
+    <link rel="stylesheet" type="text/css" href="{% static "polls/results.css"%}">
+  </head>
+  <body>
+    <header>
+      <h1>{{question.question_text}}</h1>
+    </header>
+    <main>
+      <div class="choices-group">
         {% for choice in question.choice_set.all %}
-        <li>
-            {{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}
-        </li>
+        <div class="option-group">
+          <p>{{ choice.choice_text }}</p>
+          <p>{{ choice.votes }} voto{{ choice.votes|pluralize }}</p>
+        </div>
         {% endfor %}
-    </ul>
-    <a href="{% url 'polls:detail' question.id %}">Vote again?</a>
-</body>
+        <a href="{% url 'polls:index' %}">Votar em outra enquete?</a>
+      </div>
+    </main>
+    <footer>
+      <p>Página de Listagem de Enquetes - 2021</p>
+    </footer>
+
+    {% if error_message %}
+    <p><strong> {{error_message}} </strong></p>
+    {% endif %}
+  </body>
 </html>
